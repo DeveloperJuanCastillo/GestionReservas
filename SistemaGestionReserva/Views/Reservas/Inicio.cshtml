@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SistemaGestionReserva.Models.Reserva>
+
+@{
+    ViewBag.Title = "Listado de reservas creadas";
+}
+
+<h2>Inicio</h2>
+
+<p>
+    @Html.ActionLink("Crear nueva reserva", "Crear")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Sala
+        </th>
+        <th>
+            Fecha de Reserva
+        </th>
+        <th>
+            Usuario
+        </th>
+        <th></th>
+    </tr>
+
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SalaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |
+                    @Html.ActionLink("Ver", "Detalles", new { id = item.Id }) |
+                    @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
