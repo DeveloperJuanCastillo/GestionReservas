@@ -29,7 +29,8 @@ namespace SistemaGestionReserva.Controllers
         public async Task<ActionResult> Crear()
         {
             var salas = await _salasRepo.ListarSalas();
-            ViewBag.Salas = salas;
+            var salasSelectList = new SelectList(salas, "Id", "Nombre");
+            ViewBag.Salas = salasSelectList;
             return View();
         }
 
